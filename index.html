@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Growth of Orange Trees App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Growth of Orange Trees App">
+  <meta name="author" content="Sachin Singh">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Growth of Orange Trees App</h1>
+    <h2>Course Project - Developing Data Products</h2>
+    <p>Sachin Singh<br/>Software Engineer</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>This app was made as a project for Coursera&#39;s class on Developing Data Products.</li>
+<li>It&#39;s built using shiny and hosted on shinyapps.io. Click <a href="https://sachinsingh01.shinyapps.io/Project" title="Shiny App">here</a> to see.</li>
+<li>This app uses core &quot;Growth of Orange Trees&quot; dataset comes with R.</li>
+<li>In the dataset, The trunk circumference of 5 trees is measured at 7 different ages, giving a total of 35 datapoints.</li>
+<li>The format of the dataset is below:
+
+<ul>
+<li> <strong>Tree</strong> - An ordered factor indicating the tree on which the measurement is made. The ordering is according to increasing maximum diameter.</li>
+<li> <strong>age</strong> - A numeric vector giving the age of the tree (days since 1968/12/31).</li>
+<li><strong>circumference</strong> - A numeric vector of trunk circumferences (mm). This is probably “circumference at breast height”, a standard measurement in forestry.</li>
+</ul></li>
+<li>The shiny app applies mixed-effects logistic model to analyze the orange tree growth data.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Using the App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="ShinyApp.jpg" alt="&quot;app&quot;&quot;">
+Select a particular tree number from radio group and move the slider bar to see the effect. Also, Check multiple tabs (plot, summary, model) for reactive outputs.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>R Code</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>e.g. for Tree 1</p>
+
+<pre><code class="r">library(datasets)
+fm1 &lt;- nls(circumference ~ SSlogis(age, Asym, xmid, scal), data = Orange, subset = Tree == 1)
+fm1
+</code></pre>
+
+<pre><code>## Nonlinear regression model
+##   model: circumference ~ SSlogis(age, Asym, xmid, scal)
+##    data: Orange
+##  Asym  xmid  scal 
+## 154.2 627.2 362.6 
+##  residual sum-of-squares: 177
+## 
+## Number of iterations to convergence: 0 
+## Achieved convergence tolerance: 5.815e-06
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Graphs</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> <img src="assets/fig/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>References</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Draper, N. R. and Smith, H. (1998), Applied Regression Analysis (3rd ed), Wiley (exercise 24.N).</li>
+<li>Pinheiro, J. C. and D. M. Bates (2000). Mixed-effects models in S and S-PLUS. New York: Springer.</li>
+<li>Fournier, D. A., H. J. Skaug, J. Ancheta, J. Ianelli, A. Magnusson, M. N. Maunder, A. Nielsen, and J. Sibert (2012). AD Model Builder: using automatic differentiation for statistical inference of highly parameterized complex nonlinear models. Optimization Methods &amp; Software 27 (2), 233{249.</li>
+<li>Madsen, H. and P. Thyregod (2010). Introduction to General and Generalized Linear Models. Boca Raton, FL: CRC Press.</li>
+<li>Skaug, H. and D. Fournier (2006). Automatic approximation of the marginal likelihood in non-Gaussian hierarchical models. Computational Statistics &amp; Data Analysis 51 (2), 699{709.</li>
+</ul>
+
+<p>Thank You!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Using the App'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='R Code'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Graphs'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='References'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
