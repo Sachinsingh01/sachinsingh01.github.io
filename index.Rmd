@@ -23,7 +23,7 @@ knit        : slidify::knit2slides
    * **circumference** - A numeric vector of trunk circumferences (mm). This is probably “circumference at breast height”, a standard measurement in forestry.
 6. The shiny app applies mixed-effects logistic model to analyze the orange tree growth data.
 
-[1]: https://sachinsingh01.shinyapps.io/Project "Shiny App"
+[1]: https://sachinsingh01.shinyapps.io/prog_ddp_shiny "Shiny App"
 
 --- .class #id
 
